@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">TemplateList</string>
+
+    <!-- bottom navigation -->
+    <string name="bottom_fist">First</string>
+    <string name="bottom_second">Second</string>
+    <string name="bottom_third">Third</string>
+    <string name="bottom_fourth">Fourth</string>
+
+    <!-- fragment -->
+    <string name="load_start">load start</string>
+    <string name="load_success">load success</string>
+    <string name="load_fail">load fail</string>
+    <string name="refresh_success">load success</string>
+    <string name="refresh_fail">refresh fail</string>
+
+</resources>
