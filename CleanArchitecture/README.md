@@ -1,27 +1,32 @@
-# AppUniform使用指南
+# CleanArchitecture说明
 
-1. copy整个AppUniform文件夹
+## 使用步骤
+
+1. copy整个文件夹
 2. 修改app name -> strings.xml
 3. 修改package name
-4. 完善自己的功能
 
+	简单的改法build.gradle中修改： applicationId "com.yours" 
 
-# 功能列表
+4. 客制化功能
 
-- 重构优化的目录结构
+# 默认参考功能说明
 
-   ![](https://i.imgur.com/9f3OrIV.jpg)
+项目中默认有三种数据加载：
 
-- MVP架构
-- 默认搭载常用库
+1. 简单加载：HomeActivity的加载String[]，跳转不同的Fragment
+2. AsyncTaskLoader加载：ApkListFragment 通过AsyncTaskLoader加载apk列表
+3. 网络加载：UserFragment 通过RxAndroid，Okhttp加载mock用户网络数据
+4. 图片加载：PhototFragment 通过AsyncTaskLoader 和 CursorAdapter加载本地图片
 
-        // webstie
-        compile 'com.squareup.okhttp3:okhttp:3.6.0'
-        compile 'com.squareup.retrofit2:retrofit:2.2.0'
-        compile 'com.squareup.retrofit2:converter-gson:2.0.2'
-        compile 'com.google.code.gson:gson:2.8.0'
-        // rxjava
-        compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-        compile "io.reactivex.rxjava2:rxjava:2.0.8"
-        // utils library
-        compile 'com.open.library:utilslib:1.0.171019'
+用户可以参考来扩展自己的功能
+
+# 项目结构说明
+
+CleanArchitecture项目包含四层: 展示层，业务公共层，数据层，业务无关层
+
+其中业务采用MVP框架
+
+![](https://i.imgur.com/5X0VIG0.jpg)
+
+详细说明请参看[博客CleanArchitecture](http://vivianking6855.github.io/2018/03/30/Template-Open/)
