@@ -1,6 +1,6 @@
 package com.clean.businesscommon.transaction;
 
-import com.clean.model.UserModel;
+import com.clean.user.model.UserModel;
 import com.learn.data.entity.UserEntity;
 
 /**

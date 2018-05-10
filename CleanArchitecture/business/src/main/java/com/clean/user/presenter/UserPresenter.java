@@ -1,9 +1,8 @@
-package com.clean.presenter;
+package com.clean.user.presenter;
 
-import com.clean.businesscommon.base.BasePresenter;
-import com.clean.businesscommon.listenter.IHomeDisplayer;
-import com.clean.businesscommon.transaction.DataTransaction;
-import com.learn.data.repository.UserProvider;
+import com.learn.data.listener.IUserListener;
+import com.learn.data.repository.UserRepo;
+import com.open.appbase.presenter.BasePresenter;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -14,7 +13,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * The type Home presenter.
  */
-public class HomePresenter extends BasePresenter<IHomeDisplayer> {
+public class UserPresenter extends BasePresenter<IUserListener> {
     // rx
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
@@ -23,11 +22,11 @@ public class HomePresenter extends BasePresenter<IHomeDisplayer> {
      */
     public void fetchUser() {
         // load data
-        Disposable data = Observable.fromCallable(UserProvider::getUser)
+        Disposable data = Observable.fromCallable(UserRepo::getUser)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(user -> {
-                            mOuterWeakRef.get().onDisplay(DataTransaction.transform(user));
+                           // mOuterWeakRef.get().onDisplay(DataTransaction.transform(user));
                         },
                         error -> {
                             // TODO

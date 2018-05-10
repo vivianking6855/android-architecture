@@ -1,4 +1,4 @@
-package com.clean.model;
+package com.clean.user.model;
 
 /**
  * The type User model.

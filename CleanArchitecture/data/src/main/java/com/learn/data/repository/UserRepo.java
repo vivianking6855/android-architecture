@@ -6,7 +6,7 @@ import com.learn.data.listener.IUserListener;
 /**
  * The type User provider.
  */
-public final class UserProvider {
+public final class UserRepo {
     /**
      * Gets user.
      *
