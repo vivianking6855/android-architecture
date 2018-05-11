@@ -43,7 +43,7 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
-    implementation('com.open.appbase:appbase:1.0.180510') {
+    implementation('com.open.appbase:appbase:1.0.180511') {
         exclude group: 'com.android.support'
     }
 
@@ -53,7 +53,6 @@ dependencies {
 
     implementation(project(':data')) {
         exclude group: 'com.android.support'
-        exclude group: 'com.open.library'
     }
     implementation(project(':common')) {
         exclude group: 'com.android.support'

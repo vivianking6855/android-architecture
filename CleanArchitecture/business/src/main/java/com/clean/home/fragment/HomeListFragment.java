@@ -6,12 +6,9 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.clean.R;
-import com.clean.businesscommon.base.RecyclerItemClickListener;
-import com.clean.businesscommon.base.RecyclerViewArrayAdapter;
 import com.clean.businesscommon.router.UIRouter;
 import com.open.appbase.fragment.BaseLazyFragment;
 

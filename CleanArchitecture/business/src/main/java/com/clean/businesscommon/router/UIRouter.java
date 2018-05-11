@@ -19,28 +19,6 @@ import java.lang.annotation.RetentionPolicy;
  */
 public final class UIRouter {
 
-    private static volatile UIRouter instance;
-
-    private UIRouter() {
-
-    }
-
-    /**
-     * Gets instance.
-     *
-     * @return the instance
-     */
-    public static UIRouter getInstance() {
-        if (instance == null) {
-            synchronized (UIRouter.class) {
-                if (instance == null) {
-                    instance = new UIRouter();
-                }
-            }
-        }
-        return instance;
-    }
-
     /**
      * open home HomeActivity
      *
