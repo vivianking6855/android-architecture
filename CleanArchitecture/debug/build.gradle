@@ -2,14 +2,12 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 27
+
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -23,8 +21,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    // https://github.com/orhanobut/logger
+    implementation 'com.orhanobut:logger:2.2.0'
+    // http://facebook.github.io/stetho/
+    implementation 'com.facebook.stetho:stetho:1.5.0'
 }

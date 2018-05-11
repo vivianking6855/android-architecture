@@ -15,11 +15,4 @@
     <string name="exception_message_no_connection">There is no internet connection</string>
     <string name="exception_message_user_not_found">Cannot retrieve user data. Check your internet connection</string>
 
-    <!-- permission -->
-    <string name="grant_permission">CleanArchitecture需要<strong>存储</strong>权限。
-        请点击<strong>设置</strong>，然后点击<strong>应用程序信息</strong> > <strong>权限</strong>并打开</string>
-    <string name="grant_permission_title">权限提醒</string>
-    <string name="grant_setting">设置</string>
-    <string name="grant_cancel">退出</string>
-
 </resources>

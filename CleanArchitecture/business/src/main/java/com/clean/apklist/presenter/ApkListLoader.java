@@ -9,6 +9,7 @@ import android.util.Log;
 import com.learn.data.entity.ApkEntity;
 import com.clean.businesscommon.common.Const;
 import com.learn.data.repository.ApkRepo;
+import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class ApkListLoader extends AsyncTaskLoader<List<ApkEntity>> {
     @Nullable
     @Override
     public List<ApkEntity> loadInBackground() {
-        Log.d(Const.LOG_TAG, "apk loadInBackground");
+        Logger.d(Const.LOG_TAG, "apk loadInBackground");
         return ApkRepo.getLocalAppList(getContext().getPackageManager());
     }
 

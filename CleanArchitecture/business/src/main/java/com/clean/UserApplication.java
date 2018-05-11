@@ -2,9 +2,11 @@ package com.clean;
 
 import android.app.Application;
 import android.content.res.Configuration;
+import android.os.Debug;
 
-import com.learn.data.cache.CacheManager;
-import com.learn.data.cache.GlobalManager;
+import com.clean.debug.DebugModule;
+import com.clean.debug.IConfig;
+import com.learn.data.repository.DataModule;
 
 /**
  * Created by vivian on 2017/11/13.
@@ -19,9 +21,8 @@ public class UserApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        // init cache
-        GlobalManager.INSTANCE.init();
-        CacheManager.INSTANCE.init(this);
+        DataModule.getInstance().install(this);
+        DebugModule.install(null);
     }
 
     /**
@@ -32,8 +33,8 @@ public class UserApplication extends Application {
     public void onTerminate() {
         super.onTerminate();
 
-        GlobalManager.INSTANCE.release();
-        CacheManager.INSTANCE.release();
+        DataModule.getInstance().uninstall();
+        DebugModule.uninstall();
     }
 
     /**

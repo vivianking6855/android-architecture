@@ -5,6 +5,7 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.ArrayRes;
 import android.widget.Toast;
 
 import com.clean.R;
@@ -15,12 +16,20 @@ import com.open.appbase.activity.BasePermissionActivity;
 import java.security.Permission;
 import java.security.PermissionCollection;
 
+import butterknife.BindArray;
+import butterknife.ButterKnife;
+
 /**
  * HomeActivity
  * IApkDisplayer as V in MVP
  */
 public class HomeActivity extends BasePermissionActivity {
+
+    // permission
     public static final String READ_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE;
+
+    @BindArray(R.array.permission)
+    String[] permissionStrs;
 
     @Override
     protected int getLayout() {
@@ -38,6 +47,10 @@ public class HomeActivity extends BasePermissionActivity {
                     .replace(android.R.id.content, HomeListFragment.newInstance())
                     .commitAllowingStateLoss();
         }
+
+        ButterKnife.bind(this);
+
+        setPermissionAlterDialog(permissionStrs);
     }
 
     @Override

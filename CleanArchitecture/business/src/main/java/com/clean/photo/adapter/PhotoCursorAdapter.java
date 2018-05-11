@@ -15,7 +15,8 @@ import android.widget.Toast;
 
 import com.clean.R;
 import com.learn.data.entity.PhotoEntity;
-import com.open.appbase.adapter.recyclerview.BaseAbstractRecycleCursorAdapter;
+import com.open.appbase.adapter.recyclerview.BaseRecyclerCursorAdapter;
+import com.orhanobut.logger.Logger;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -34,7 +35,7 @@ import static com.clean.businesscommon.common.Const.PHOTO_GRID_NUM;
 /**
  * The type Photo cursor adapter.
  */
-public class PhotoCursorAdapter extends BaseAbstractRecycleCursorAdapter<RecyclerView.ViewHolder> {
+public class PhotoCursorAdapter extends BaseRecyclerCursorAdapter<RecyclerView.ViewHolder> {
     // global LayoutInflater to void multi-get in onCreateViewHolder
     private final LayoutInflater mLayoutInflater;
     // context, you'd better pass one WeakReference to avoid Memory Leak
@@ -136,7 +137,7 @@ public class PhotoCursorAdapter extends BaseAbstractRecycleCursorAdapter<Recycle
 
             if (isChecked) {
                 PhotoEntity item = PhotoEntity.fromCursor((Cursor) mAdapterRef.get().getItem(getLayoutPosition()));
-                Log.d(LOG_TAG, "check " + getLayoutPosition() + ":" + item.title);
+                Logger.d(LOG_TAG, "check " + getLayoutPosition() + ":" + item.title);
                 Toast.makeText(mAdapterRef.get().mContext, "check " + getLayoutPosition() + ":" + item.title, Toast.LENGTH_SHORT).show();
             } else {
                 // unCheck
@@ -158,7 +159,7 @@ public class PhotoCursorAdapter extends BaseAbstractRecycleCursorAdapter<Recycle
     public void releasePicasso() {
         for (String path : imageSet) {
             Picasso.get().invalidate(new File(path));
-            Log.d(LOG_TAG, "release Picasso photo " + path);
+            Logger.d(LOG_TAG, "release Picasso photo " + path);
         }
     }
 }

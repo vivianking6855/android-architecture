@@ -23,10 +23,18 @@
 
 # 项目结构说明
 
-CleanArchitecture项目包含四层: 展示层，业务公共层，数据层，业务无关层
+CleanArchitecture项目包含四层: 
+
+- 展示层
+- 业务公共层
+- 数据层
+- 业务无关层
+
+还有调试debug模块
 
 其中业务采用MVP框架
 
 ![](https://i.imgur.com/5X0VIG0.jpg)
 
 详细说明请参看[博客CleanArchitecture](http://vivianking6855.github.io/2018/03/30/Template-Open/)
+

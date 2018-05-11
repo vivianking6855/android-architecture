@@ -5,12 +5,16 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.clean.R;
 import com.clean.businesscommon.router.UIRouter;
+import com.open.appbase.adapter.recyclerview.RecyclerItemClickListener;
+import com.open.appbase.adapter.recyclerview.RecyclerViewArrayAdapter;
 import com.open.appbase.fragment.BaseLazyFragment;
+import com.orhanobut.logger.Logger;
 
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
@@ -19,6 +23,8 @@ import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+
+import static com.clean.businesscommon.common.Const.LOG_TAG;
 
 /**
  * Home List Fragment
@@ -89,10 +95,11 @@ public class HomeListFragment extends BaseLazyFragment {
         safeDestroy();
     }
 
-    private void safeDestroy(){
+    private void safeDestroy() {
         try {
             unbinder.unbind();
         } catch (Exception ex) {
+            Logger.w(LOG_TAG, "safeDestroy ex", ex);
         }
     }
 

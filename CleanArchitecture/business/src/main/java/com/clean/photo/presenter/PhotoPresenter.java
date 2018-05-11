@@ -14,6 +14,7 @@ import com.clean.photo.adapter.PhotoCursorAdapter;
 import com.clean.photo.listenter.IPhotoDisplayer;
 import com.learn.data.repository.PhotoRepo;
 import com.open.appbase.presenter.BasePresenter;
+import com.orhanobut.logger.Logger;
 
 
 /**
@@ -48,7 +49,7 @@ public class PhotoPresenter extends BasePresenter<IPhotoDisplayer> {
             }
             viewWeakRef.get().onDisplay("photo load finish!");
             if (data == null || data.getCount() == 0) {
-                Log.w(Const.LOG_TAG, "photo onLoadFinished empty data");
+                Logger.w(Const.LOG_TAG, "photo onLoadFinished empty data");
                 return;
             } else {
                 mPhotoAdapter.swapCursor(data);

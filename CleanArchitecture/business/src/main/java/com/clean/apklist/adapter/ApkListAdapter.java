@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import com.clean.R;
 import com.learn.data.entity.ApkEntity;
-import com.open.appbase.adapter.BaseListAdapter;
+import com.open.appbase.adapter.recyclerview.BaseRecyclerListAdapter;
 
-public class ApkListAdapter extends BaseListAdapter<ApkEntity, ApkListAdapter.DataViewHolder> {
+public class ApkListAdapter extends BaseRecyclerListAdapter<ApkEntity, ApkListAdapter.DataViewHolder> {
     // global LayoutInflater to void multi-get in onCreateViewHolder
     private final LayoutInflater mLayoutInflater;
 
