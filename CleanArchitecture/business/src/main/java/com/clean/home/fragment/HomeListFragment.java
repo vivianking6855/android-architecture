@@ -5,7 +5,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -24,7 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-import static com.clean.businesscommon.common.Const.LOG_TAG;
+import static com.clean.businesscommon.common.Const.TAG_APP;
 
 /**
  * Home List Fragment
@@ -99,7 +98,7 @@ public class HomeListFragment extends BaseLazyFragment {
         try {
             unbinder.unbind();
         } catch (Exception ex) {
-            Logger.w(LOG_TAG, "safeDestroy ex", ex);
+            Logger.w("safeDestroy ex", ex);
         }
     }
 

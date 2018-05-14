@@ -13,6 +13,7 @@ import com.clean.apklist.adapter.ApkListAdapter;
 import com.clean.apklist.listenter.IApkDisplayer;
 import com.clean.apklist.presenter.ApkPresenter;
 import com.open.appbase.fragment.BaseMVPLazyFragment;
+import com.orhanobut.logger.Logger;
 
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
@@ -20,6 +21,8 @@ import java.lang.ref.WeakReference;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+
+import static com.clean.businesscommon.common.Const.TAG_APP;
 
 /**
  * Apk List Fragment
@@ -82,10 +85,11 @@ public class ApkListFragment extends BaseMVPLazyFragment<IApkDisplayer, ApkPrese
         safeDestroy();
     }
 
-    private void safeDestroy(){
+    private void safeDestroy() {
         try {
             unbinder.unbind();
         } catch (Exception ex) {
+            Logger.w("safeDestroy ex", ex);
         }
     }
 

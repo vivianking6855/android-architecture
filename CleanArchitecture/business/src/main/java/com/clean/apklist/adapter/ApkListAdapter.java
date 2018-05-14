@@ -1,6 +1,7 @@
 package com.clean.apklist.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,15 +21,15 @@ public class ApkListAdapter extends BaseRecyclerListAdapter<ApkEntity, ApkListAd
         mLayoutInflater = LayoutInflater.from(context);
     }
 
+    @NonNull
     @Override
-    public DataViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public DataViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mLayoutInflater.inflate(R.layout.apk_recycler_item, parent, false);
-        ApkListAdapter.DataViewHolder holder = new ApkListAdapter.DataViewHolder(view);
-        return holder;
+        return new ApkListAdapter.DataViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(DataViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DataViewHolder holder, int position) {
         if (mData == null || position >= mData.size()) {
             return;
         }
@@ -40,7 +41,7 @@ public class ApkListAdapter extends BaseRecyclerListAdapter<ApkEntity, ApkListAd
         TextView tv;
         ImageView icon;
 
-        public DataViewHolder(View view) {
+        DataViewHolder(View view) {
             super(view);
             tv = view.findViewById(android.R.id.title);
             icon = view.findViewById(android.R.id.icon);

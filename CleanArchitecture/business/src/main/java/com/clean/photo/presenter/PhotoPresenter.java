@@ -24,7 +24,7 @@ public class PhotoPresenter extends BasePresenter<IPhotoDisplayer> {
 
     private PhotoCursorAdapter mPhotoAdapter;
 
-    public void setAdapter(PhotoCursorAdapter adapter){
+    public void setAdapter(PhotoCursorAdapter adapter) {
         mPhotoAdapter = adapter;
     }
 
@@ -44,16 +44,18 @@ public class PhotoPresenter extends BasePresenter<IPhotoDisplayer> {
 
         @Override
         public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-            if(mPhotoAdapter == null){
+            if (mPhotoAdapter == null || viewWeakRef.get() == null) {
                 return;
             }
-            viewWeakRef.get().onDisplay("photo load finish!");
+
             if (data == null || data.getCount() == 0) {
-                Logger.w(Const.LOG_TAG, "photo onLoadFinished empty data");
+                Logger.w("empty photo data");
                 return;
             } else {
                 mPhotoAdapter.swapCursor(data);
             }
+
+            viewWeakRef.get().onDisplay("photo load finish! " + data.getCount());
         }
 
         @Override

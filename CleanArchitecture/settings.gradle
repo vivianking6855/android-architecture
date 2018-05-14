@@ -1,1 +1,1 @@
-include ':business', ':data', ':common', ':debug'
+include ':business', ':common', ':data'

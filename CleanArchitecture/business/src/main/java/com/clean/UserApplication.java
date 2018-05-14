@@ -2,11 +2,10 @@ package com.clean;
 
 import android.app.Application;
 import android.content.res.Configuration;
-import android.os.Debug;
 
-import com.clean.debug.DebugModule;
-import com.clean.debug.IConfig;
+import com.clean.debug.DebugBusiness;
 import com.learn.data.repository.DataModule;
+import com.orhanobut.logger.Logger;
 
 /**
  * Created by vivian on 2017/11/13.
@@ -20,9 +19,17 @@ public class UserApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        initApp();
+    }
 
+    private void initApp() {
+        // install data module
+        Logger.d("DataModule install");
         DataModule.getInstance().install(this);
-        DebugModule.install(null);
+
+        // install debug
+        Logger.d("DebugBusiness install");
+        DebugBusiness.install();
     }
 
     /**
@@ -34,7 +41,7 @@ public class UserApplication extends Application {
         super.onTerminate();
 
         DataModule.getInstance().uninstall();
-        DebugModule.uninstall();
+        DebugBusiness.uninstall();
     }
 
     /**

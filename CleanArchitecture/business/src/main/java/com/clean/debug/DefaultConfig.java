@@ -4,7 +4,16 @@ import android.util.Log;
 
 import com.clean.BuildConfig;
 
-public class DefaultConfig implements IConfig {
+/**
+ * The type Default config.
+ */
+public class DefaultConfig {
+
+    /**
+     * false will disable all log debug.
+     */
+    public static final boolean ENABLE = true;
+
     /**
      * LOG_TAG for high level debug with property: 'adb shell setprop log.tag.codedebug D'
      */
@@ -18,17 +27,8 @@ public class DefaultConfig implements IConfig {
     public static final boolean DEBUG_HIGH = Log.isLoggable(LOG_TAG, Log.DEBUG);
 
     /**
-     * The constant BuildConfig.DEBUG.
+     * The constant DEBUG_LOW.
      */
     public static final boolean DEBUG_LOW = BuildConfig.DEBUG;
 
-    @Override
-    public boolean enable() {
-        return true;
-    }
-
-    @Override
-    public boolean debugLevel() {
-        return DEBUG_LOW;
-    }
 }

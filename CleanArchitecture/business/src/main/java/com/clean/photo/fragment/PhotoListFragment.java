@@ -13,6 +13,7 @@ import com.clean.photo.adapter.PhotoCursorAdapter;
 import com.clean.photo.listenter.IPhotoDisplayer;
 import com.clean.photo.presenter.PhotoPresenter;
 import com.open.appbase.fragment.BaseMVPLazyFragment;
+import com.orhanobut.logger.Logger;
 
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
@@ -22,6 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 import static com.clean.businesscommon.common.Const.PHOTO_GRID_NUM;
+import static com.clean.businesscommon.common.Const.TAG_APP;
 
 /**
  * Apk List Fragment
@@ -83,15 +85,15 @@ public class PhotoListFragment extends BaseMVPLazyFragment<IPhotoDisplayer, Phot
         super.onDestroyView();
 
         safeDestroy();
+
+        //mAdapter.releasePicasso();
     }
 
     private void safeDestroy() {
         try {
             unbinder.unbind();
-
-            // if you don't want to clear Picasso photo, comment it
-            mAdapter.releasePicasso();
         } catch (Exception ex) {
+            Logger.w("safeDestroy ex", ex);
         }
     }
 

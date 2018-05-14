@@ -69,10 +69,10 @@ public class DiskCacheManager {
                 // open DiskLruCache
                 mDiskLruCache = DiskLruCache.open(PathUtils.getDiskCacheDir(context.getApplicationContext(), DISK_CACHE_PATH),
                         AppUtils.getAppVersionCode(context), 1, DISK_MAX_SIZE);
-                Logger.d(TAG, "mDiskLruCache path " + mDiskLruCache.getDirectory().getPath());
+                Logger.d("mDiskLruCache path " + mDiskLruCache.getDirectory().getPath());
             }
         } catch (IOException e) {
-            Logger.w(TAG, "getDiskCache ex ", e);
+            Logger.w("getDiskCache ex ", e);
         }
 
         return mDiskLruCache;
@@ -94,7 +94,7 @@ public class DiskCacheManager {
                 mDiskLruCache.flush();
             }
         } catch (IOException e) {
-            Logger.w(TAG, "flushDiskLruCache ex ", e);
+            Logger.w("flushDiskLruCache ex ", e);
         }
     }
 
@@ -123,7 +123,7 @@ public class DiskCacheManager {
                 mDiskLruCache.close();
             }
         } catch (IOException e) {
-            Logger.w(TAG, "flushDiskLruCache ex ", e);
+            Logger.w("flushDiskLruCache ex ", e);
         }
     }
 
