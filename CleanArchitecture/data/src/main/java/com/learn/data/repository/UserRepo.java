@@ -1,6 +1,7 @@
 package com.learn.data.repository;
 
 import com.learn.data.entity.UserEntity;
+import com.learn.data.exception.UserNotFoundException;
 import com.learn.data.listener.IUserListener;
 
 /**
@@ -18,16 +19,26 @@ public final class UserRepo {
         }
         try {
             Thread.sleep(2000);
-            listener.onSuccess(new UserEntity("mockId"));
+
+            String mockId = "mockId";
+            if(mockId == null || mockId.isEmpty()){
+                listener.onError(new UserNotFoundException());
+            }else {
+                listener.onSuccess(new UserEntity(mockId));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static UserEntity getUser() {
+    public static UserEntity getUser(){
         try {
             Thread.sleep(2000);
-            return new UserEntity("mockId");
+            String mockId = "mockId";
+            if(mockId == null || mockId.isEmpty()){
+                throw new UserNotFoundException();
+            }
+            return new UserEntity(mockId);
         } catch (Exception e) {
             e.printStackTrace();
         }

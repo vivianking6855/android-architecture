@@ -1,6 +1,8 @@
 package com.clean.user.presenter;
 
-import com.learn.data.listener.IUserListener;
+import com.clean.businesscommon.transaction.DataTransaction;
+import com.clean.user.listenter.IUserDisplayer;
+import com.clean.user.model.UserModel;
 import com.learn.data.repository.UserRepo;
 import com.open.appbase.presenter.BasePresenter;
 
@@ -13,7 +15,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * The type Home presenter.
  */
-public class UserPresenter extends BasePresenter<IUserListener> {
+public class UserPresenter extends BasePresenter<IUserDisplayer> {
     // rx
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
@@ -26,10 +28,10 @@ public class UserPresenter extends BasePresenter<IUserListener> {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(user -> {
-                           // mOuterWeakRef.get().onDisplay(DataTransaction.transform(user));
+                            viewWeakRef.get().onDisplay(DataTransaction.transformUser(user));
                         },
                         error -> {
-                            // TODO
+                            viewWeakRef.get().onDisplay(new UserModel(null));
                         });
 
         compositeDisposable.add(data);

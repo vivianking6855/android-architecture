@@ -1,13 +1,20 @@
 package com.clean.user.model;
 
+import com.alibaba.fastjson.JSON;
+
 /**
  * The type User model.
  */
 public class UserModel {
-    private final String userId;
-    private String coverUrl;
-    private String fullName;
-    private String description;
+    public final String userId;
+    public String coverUrl;
+    public String fullName;
+    public String description;
+
+    // load status
+    public final static int SUCCESS = 1;
+    public final static int FAIL = 0;
+    public int status = 0;
 
     /**
      * Instantiates a new User model.
@@ -16,68 +23,13 @@ public class UserModel {
      */
     public UserModel(String userId) {
         this.userId = userId;
+        if (userId != null) {
+            status = SUCCESS;
+        }
     }
 
-    /**
-     * Gets user id.
-     *
-     * @return the user id
-     */
-    public String getUserId() {
-        return userId;
-    }
-
-    /**
-     * Gets cover url.
-     *
-     * @return the cover url
-     */
-    public String getCoverUrl() {
-        return coverUrl;
-    }
-
-    /**
-     * Sets cover url.
-     *
-     * @param coverUrl the cover url
-     */
-    public void setCoverUrl(String coverUrl) {
-        this.coverUrl = coverUrl;
-    }
-
-    /**
-     * Gets full name.
-     *
-     * @return the full name
-     */
-    public String getFullName() {
-        return fullName;
-    }
-
-    /**
-     * Sets full name.
-     *
-     * @param fullName the full name
-     */
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    /**
-     * Gets description.
-     *
-     * @return the description
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Sets description.
-     *
-     * @param description the description
-     */
-    public void setDescription(String description) {
-        this.description = description;
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 }

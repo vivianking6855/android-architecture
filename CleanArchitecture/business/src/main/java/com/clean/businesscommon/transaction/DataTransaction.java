@@ -14,7 +14,7 @@ public class DataTransaction {
      * @param entity the entity
      * @return the user model
      */
-    public static UserModel transform(UserEntity entity) {
+    public static UserModel transformUser(UserEntity entity) {
         if (entity == null) {
             return null;
         }
