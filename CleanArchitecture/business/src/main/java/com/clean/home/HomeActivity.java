@@ -19,9 +19,6 @@ import butterknife.ButterKnife;
  */
 public class HomeActivity extends BasePermissionActivity {
 
-    // permission
-    public static final String READ_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE;
-
     @BindArray(R.array.permission)
     String[] permissionStrs;
 
@@ -43,13 +40,11 @@ public class HomeActivity extends BasePermissionActivity {
         }
 
         ButterKnife.bind(this);
-
-        setPermissionAlterDialog(permissionStrs);
     }
 
     @Override
     protected void loadData() {
-
+        setPermissionAlterDialog(permissionStrs);
     }
 
     /**
@@ -64,7 +59,7 @@ public class HomeActivity extends BasePermissionActivity {
 
     @Override
     protected String[] getPermissions() {
-        return new String[]{READ_STORAGE};
+        return new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
     }
 
     @Override
@@ -73,7 +68,7 @@ public class HomeActivity extends BasePermissionActivity {
     }
 
     @Override
-    protected void permissionDeny() {
-        Toast.makeText(this,"Photo Read will not work", Toast.LENGTH_SHORT).show();
+    protected void permissionDeny(String[] notGranted) {
+        Toast.makeText(HomeActivity.this, "Photo will not work", Toast.LENGTH_SHORT).show();
     }
 }

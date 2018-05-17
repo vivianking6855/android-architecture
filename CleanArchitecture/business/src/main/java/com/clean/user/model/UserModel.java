@@ -1,5 +1,7 @@
 package com.clean.user.model;
 
+import android.support.annotation.StringRes;
+
 import com.alibaba.fastjson.JSON;
 
 /**
@@ -15,6 +17,7 @@ public class UserModel {
     public final static int SUCCESS = 1;
     public final static int FAIL = 0;
     public int status = 0;
+    public String error;
 
     /**
      * Instantiates a new User model.
@@ -23,6 +26,14 @@ public class UserModel {
      */
     public UserModel(String userId) {
         this.userId = userId;
+        if (userId != null) {
+            status = SUCCESS;
+        }
+    }
+
+    public UserModel(String userId, String error) {
+        this.userId = userId;
+        this.error = error;
         if (userId != null) {
             status = SUCCESS;
         }

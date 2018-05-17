@@ -59,7 +59,7 @@ public class UserFragment extends BaseMVPLazyFragment<IUserDisplayer, UserPresen
 
     @Override
     protected void loadData() {
-        mPresenter.fetchUser();
+        mPresenter.fetchUserWithRx();
     }
 
     @Override
