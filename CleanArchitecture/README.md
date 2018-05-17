@@ -16,8 +16,8 @@
 
 1. 简单加载：HomeActivity的加载String[]，跳转不同的Fragment
 2. AsyncTaskLoader加载：ApkListFragment 通过AsyncTaskLoader加载apk列表
-3. 网络加载：UserFragment 通过RxAndroid，Okhttp加载mock用户网络数据
-4. 图片加载：PhototFragment 通过AsyncTaskLoader 和 CursorAdapter加载本地图片
+3. 图片加载：PhototFragment 通过AsyncTaskLoader 和 CursorAdapter加载本地图片网络加载：
+4. UserFragment 三种加载方式：线程池加载，异步+listener, Rx加载方式
 
 用户可以参考来扩展自己的功能
 

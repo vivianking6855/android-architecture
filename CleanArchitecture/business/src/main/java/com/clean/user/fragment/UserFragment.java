@@ -59,7 +59,9 @@ public class UserFragment extends BaseMVPLazyFragment<IUserDisplayer, UserPresen
 
     @Override
     protected void loadData() {
-        mPresenter.fetchUserWithRx();
+        // mPresenter.fetchUserWithRx();
+        //mPresenter.fetchUserWithJobTask();
+        mPresenter.fetchUserWithListener();
     }
 
     @Override
@@ -78,6 +80,8 @@ public class UserFragment extends BaseMVPLazyFragment<IUserDisplayer, UserPresen
 
     @Override
     public void onDisplay(UserModel user) {
-        titleTV.setText(user.toString());
+        if (user != null) {
+            titleTV.setText(user.toString());
+        }
     }
 }
