@@ -85,11 +85,18 @@ public class HomeListFragment extends BaseLazyFragment {
 
             }
         }));
+
+        setDataLoadCompleted(true);
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    protected boolean isKeepRootView() {
+        return true;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
 
         safeDestroy();
     }

@@ -48,7 +48,7 @@ dependencies {
     // fastjason
     implementation 'com.alibaba:fastjson:1.2.46'
     // app base
-    implementation('com.open.appbase:appbase:1.0.180517') {
+    implementation('com.open.appbase:appbase:1.0.180522') {
         exclude group: 'com.android.support'
     }
     // picasso
