@@ -3,9 +3,12 @@ package com.clean;
 import android.app.Application;
 import android.content.res.Configuration;
 
+import com.clean.businesscommon.SingletonManager;
 import com.clean.debug.DebugBusiness;
 import com.learn.data.repository.DataModule;
 import com.orhanobut.logger.Logger;
+
+import static com.clean.businesscommon.SingletonManager.DATA_SERVICE;
 
 /**
  * Created by vivian on 2017/11/13.
@@ -23,13 +26,15 @@ public class UserApplication extends Application {
     }
 
     private void initApp() {
-        // install data module
-        Logger.d("DataModule install");
-        DataModule.getInstance().install(this);
+        SingletonManager.registerService(DATA_SERVICE, DataModule.getInstance());
 
         // install debug
         Logger.d("DebugBusiness install");
         DebugBusiness.install();
+    }
+
+    private void releaseApp() {
+        DebugBusiness.uninstall();
     }
 
     /**
@@ -40,8 +45,7 @@ public class UserApplication extends Application {
     public void onTerminate() {
         super.onTerminate();
 
-        DataModule.getInstance().uninstall();
-        DebugBusiness.uninstall();
+        releaseApp();
     }
 
     /**

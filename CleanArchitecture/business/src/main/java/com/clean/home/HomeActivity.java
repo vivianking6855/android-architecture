@@ -7,11 +7,16 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.clean.R;
+import com.clean.businesscommon.SingletonManager;
 import com.clean.home.fragment.HomeListFragment;
+import com.learn.data.repository.DataModule;
 import com.open.appbase.activity.BasePermissionActivity;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindArray;
 import butterknife.ButterKnife;
+
+import static com.clean.businesscommon.SingletonManager.DATA_SERVICE;
 
 /**
  * HomeActivity
@@ -29,6 +34,12 @@ public class HomeActivity extends BasePermissionActivity {
 
     @Override
     protected void initData() {
+        // install data module
+        Logger.d("DataModule install");
+        DataModule data = (DataModule) SingletonManager.getService(DATA_SERVICE);
+        if (data != null) {
+            data.install(this);
+        }
     }
 
     @Override
@@ -70,5 +81,20 @@ public class HomeActivity extends BasePermissionActivity {
     @Override
     protected void permissionDeny(String[] notGranted) {
         Toast.makeText(HomeActivity.this, "Photo will not work", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        safeDestroy();
+    }
+
+    private void safeDestroy() {
+        Logger.d("DataModule uninstall");
+        DataModule data = (DataModule) SingletonManager.getService(DATA_SERVICE);
+        if (data != null) {
+            data.uninstall();
+        }
     }
 }

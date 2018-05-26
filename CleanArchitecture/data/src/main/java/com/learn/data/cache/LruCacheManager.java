@@ -12,31 +12,26 @@ public class LruCacheManager {
     // lru cache
     private static LruCache<String, String> mLruStringCache;
 
-    private static volatile LruCacheManager instance;
-
-    private LruCacheManager() {
-    }
-
     /**
-     * Gets instance.
+     * Gets instance with inner static class way
      *
      * @return the instance
      */
     public static LruCacheManager getInstance() {
-        if (instance == null) {
-            synchronized (LruCacheManager.class) {
-                if (instance == null) {
-                    instance = new LruCacheManager();
-                }
-            }
-        }
-        return instance;
-    };
+        return LruCacheManager.Holder.INSTANCE;
+    }
+
+    private LruCacheManager() {
+    }
+
+    private static class Holder {
+        private static final LruCacheManager INSTANCE = new LruCacheManager();
+    }
 
     /**
+     * default size is 1/8 of available memory (K)
      * @param context context
      * @return default size
-     * @description default size is 1/8 of available memory
      */
     public static int getDefaultLruCacheSize(Context context) {
         // Get memory class of this device, exceeding this amount will throw an

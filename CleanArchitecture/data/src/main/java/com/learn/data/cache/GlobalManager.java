@@ -10,26 +10,21 @@ package com.learn.data.cache;
 public class GlobalManager {
     public int mDataCount;
 
-    private static volatile GlobalManager instance;
-
-    private GlobalManager() {
-    }
-
     /**
-     * Gets instance.
+     * Gets instance with inner static class way
      *
      * @return the instance
      */
     public static GlobalManager getInstance() {
-        if (instance == null) {
-            synchronized (GlobalManager.class) {
-                if (instance == null) {
-                    instance = new GlobalManager();
-                }
-            }
-        }
-        return instance;
-    };
+        return GlobalManager.Holder.INSTANCE;
+    }
+
+    private GlobalManager() {
+    }
+
+    private static class Holder {
+        private static final GlobalManager INSTANCE = new GlobalManager();
+    }
 
     public void init(){
 

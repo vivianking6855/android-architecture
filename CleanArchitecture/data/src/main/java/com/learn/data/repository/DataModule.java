@@ -6,31 +6,35 @@ import com.learn.data.cache.DiskCacheManager;
 import com.learn.data.cache.GlobalManager;
 import com.learn.data.common.DiskLruCacheUtils;
 
+/**
+ * The type Data module.
+ */
 public class DataModule {
-    private static volatile DataModule instance;
 
     private Context appContext;
 
-    private DataModule() {
-    }
-
     /**
-     * Gets instance.
+     * Gets instance with inner static class way
      *
      * @return the instance
      */
     public static DataModule getInstance() {
-        if (instance == null) {
-            synchronized (DataModule.class) {
-                if (instance == null) {
-                    instance = new DataModule();
-                }
-            }
-        }
-        return instance;
-    };
+        return Holder.INSTANCE;
+    }
 
-    public void install(Context context){
+    private DataModule() {
+    }
+
+    private static class Holder {
+        private static final DataModule INSTANCE = new DataModule();
+    }
+
+    /**
+     * Install some data modules
+     *
+     * @param context the context
+     */
+    public void install(Context context) {
         appContext = context.getApplicationContext();
         // init cache
         GlobalManager.getInstance().init();
@@ -39,7 +43,10 @@ public class DataModule {
         DiskLruCacheUtils.setDiskLruCache(DiskCacheManager.getInstance().getDiskLruCache(context));
     }
 
-    public void uninstall(){
+    /**
+     * Uninstall data modules
+     */
+    public void uninstall() {
         GlobalManager.getInstance().release();
         DiskCacheManager.getInstance().release();
     }
