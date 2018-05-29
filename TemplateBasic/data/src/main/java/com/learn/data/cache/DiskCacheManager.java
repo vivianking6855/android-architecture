@@ -2,7 +2,6 @@ package com.learn.data.cache;
 
 
 import android.content.Context;
-import android.util.Log;
 
 import com.jakewharton.disklrucache.DiskLruCache;
 import com.open.utilslib.base.AppUtils;
@@ -18,7 +17,6 @@ import java.io.IOException;
  */
 public class DiskCacheManager {
     private final String TAG = "DiskCacheManager";
-    private static volatile DiskCacheManager instance;
 
     // disk cache
     private DiskLruCache mDiskLruCache;
@@ -27,24 +25,21 @@ public class DiskCacheManager {
     // disk cache max size
     private static final int DISK_MAX_SIZE = 10 * 1024 * 1024; // 10M
 
-    private DiskCacheManager() {
-    }
-
     /**
-     * Gets instance.
+     * Gets instance with inner static class way
      *
      * @return the instance
      */
     public static DiskCacheManager getInstance() {
-        if (instance == null) {
-            synchronized (DiskCacheManager.class) {
-                if (instance == null) {
-                    instance = new DiskCacheManager();
-                }
-            }
-        }
-        return instance;
-    };
+        return Holder.INSTANCE;
+    }
+
+    private DiskCacheManager() {
+    }
+
+    private static class Holder {
+        private static final DiskCacheManager INSTANCE = new DiskCacheManager();
+    }
 
 
     public void init(Context context) {

@@ -15,6 +15,18 @@ import static com.clean.businesscommon.SingletonManager.DATA_SERVICE;
  * User customized Application
  */
 public class UserApplication extends Application {
+
+    private static UserApplication instance;
+
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
+    public static UserApplication getInstance() {
+        return instance;
+    }
+
     /**
      * 在创建应用程序时调用，可以在这里实例化应用程序的单例，
      * 创建和实例化任何应用程序状态变量或共享资源等
@@ -22,6 +34,7 @@ public class UserApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         initApp();
     }
 

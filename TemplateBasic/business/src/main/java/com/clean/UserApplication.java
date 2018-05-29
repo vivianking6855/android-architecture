@@ -3,15 +3,30 @@ package com.clean;
 import android.app.Application;
 import android.content.res.Configuration;
 
+import com.clean.businesscommon.SingletonManager;
 import com.clean.debug.DebugBusiness;
 import com.learn.data.repository.DataModule;
 import com.orhanobut.logger.Logger;
+
+import static com.clean.businesscommon.SingletonManager.DATA_SERVICE;
 
 /**
  * Created by vivian on 2017/11/13.
  * User customized Application
  */
 public class UserApplication extends Application {
+
+    private static UserApplication instance;
+
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
+    public static UserApplication getInstance() {
+        return instance;
+    }
+
     /**
      * 在创建应用程序时调用，可以在这里实例化应用程序的单例，
      * 创建和实例化任何应用程序状态变量或共享资源等
@@ -19,17 +34,20 @@ public class UserApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         initApp();
     }
 
     private void initApp() {
-        // install data module
-        Logger.d("DataModule install");
-        DataModule.getInstance().install(this);
+        SingletonManager.registerService(DATA_SERVICE, DataModule.getInstance());
 
         // install debug
         Logger.d("DebugBusiness install");
         DebugBusiness.install();
+    }
+
+    private void releaseApp() {
+        DebugBusiness.uninstall();
     }
 
     /**
@@ -40,8 +58,7 @@ public class UserApplication extends Application {
     public void onTerminate() {
         super.onTerminate();
 
-        DataModule.getInstance().uninstall();
-        DebugBusiness.uninstall();
+        releaseApp();
     }
 
     /**
