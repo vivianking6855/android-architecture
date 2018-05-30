@@ -2,21 +2,21 @@ package com.clean.home.fragment;
 
 import android.support.v4.app.Fragment;
 
-import com.clean.apklist.fragment.ApkListFragment;
-import com.clean.photo.fragment.PhotoListFragment;
+import com.clean.hot.fragment.HotFragment;
 import com.clean.template.fragment.TemplateFragment;
-import com.clean.user.fragment.UserFragment;
 
 /**
- * home page fragment manage.
+ * Created on 2018/2/24.
  */
+
+
 public enum HomeFragmentManager {
     INSTANCE;
 
     // fragment
-    private ApkListFragment firstFragment;
-    private PhotoListFragment secondFragment;
-    private UserFragment thirdFragment;
+    private HotFragment firstFragment;
+    private TemplateFragment secondFragment;
+    private TemplateFragment thirdFragment;
     private TemplateFragment fourthFragment;
 
     public static final String KEY_FIRST = "first";
@@ -25,9 +25,9 @@ public enum HomeFragmentManager {
     public static final String KEY_FOURTH = "fourth";
 
     public void init() {
-        firstFragment = ApkListFragment.newInstance();
-        secondFragment = PhotoListFragment.newInstance();
-        thirdFragment = UserFragment.newInstance();
+        firstFragment = HotFragment.newInstance();
+        secondFragment = TemplateFragment.newInstance();
+        thirdFragment = TemplateFragment.newInstance();
         fourthFragment = TemplateFragment.newInstance();
     }
 

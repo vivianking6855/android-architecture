@@ -1,7 +1,6 @@
 package com.clean.home;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +22,7 @@ import butterknife.ButterKnife;
 
 /**
  * HomeActivity
- * IApkDisplayer as V in MVP
+ * IHotDisplayer as V in MVP
  */
 public class HomeActivity extends BasePermissionActivity {
 
@@ -31,8 +30,6 @@ public class HomeActivity extends BasePermissionActivity {
     @BindView(R.id.navigation)
     BottomNavigationView bottomNavigationView;
     private MenuItem currentItem; // current menu item
-
-
 
     // adapter
     @BindView(R.id.viewpager)

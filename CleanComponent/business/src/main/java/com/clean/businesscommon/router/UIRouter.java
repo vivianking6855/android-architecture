@@ -6,11 +6,9 @@ import android.support.annotation.IntDef;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
-import com.clean.apklist.fragment.ApkListFragment;
 import com.clean.home.HomeActivity;
-import com.clean.photo.fragment.PhotoListFragment;
+import com.clean.hot.fragment.HotFragment;
 import com.clean.template.fragment.TemplateFragment;
-import com.clean.user.fragment.UserFragment;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -39,17 +37,12 @@ public final class UIRouter {
 
         Fragment fragment = null;
         switch (position) {
-            case UIType.PHOTO:
-                fragment = PhotoListFragment.newInstance();
-                break;
-            case UIType.APK:
-                fragment = ApkListFragment.newInstance();
-                break;
-            case UIType.USER:
-                fragment = UserFragment.newInstance();
+            case UIType.HOT:
+                fragment = HotFragment.newInstance();
                 break;
             case UIType.TEMPLATE:
                 fragment = TemplateFragment.newInstance();
+                break;
             default:
                 break;
         }
@@ -65,13 +58,10 @@ public final class UIRouter {
     }
 
     public static class UIType {
-        public static final int APK = 0;
-        public static final int PHOTO = 1;
-        public static final int USER = 2;
-        public static final int TEMPLATE = 3;
+        public static final int HOT = 0;
+        public static final int TEMPLATE = 1;
 
-
-        @IntDef({PHOTO, APK, USER, TEMPLATE})
+        @IntDef({HOT, TEMPLATE})
         @Retention(RetentionPolicy.SOURCE)
         public @interface Type {
         }

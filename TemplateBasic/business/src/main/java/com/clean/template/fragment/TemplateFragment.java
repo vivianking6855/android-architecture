@@ -1,13 +1,13 @@
-package com.clean.user.fragment;
+package com.clean.template.fragment;
 
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.clean.R;
-import com.clean.user.listenter.IUserDisplayer;
-import com.clean.user.model.UserModel;
-import com.clean.user.presenter.UserPresenter;
+import com.clean.template.listenter.ITemplateDisplayer;
+import com.clean.template.model.TemplateModel;
+import com.clean.template.presenter.TemplatePresenter;
 import com.open.appbase.fragment.BaseMVPLazyFragment;
 import com.orhanobut.logger.Logger;
 
@@ -19,9 +19,9 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Apk List Fragment
+ * Template Fragment show you the template usage.
  */
-public class UserFragment extends BaseMVPLazyFragment<IUserDisplayer, UserPresenter> implements IUserDisplayer {
+public class TemplateFragment extends BaseMVPLazyFragment<ITemplateDisplayer, TemplatePresenter> implements ITemplateDisplayer {
     private Reference<FragmentActivity> mActivityRef;
 
     private Unbinder unbinder;
@@ -29,18 +29,18 @@ public class UserFragment extends BaseMVPLazyFragment<IUserDisplayer, UserPresen
     @BindView(android.R.id.title)
     TextView titleTV;
 
-    public static UserFragment newInstance() {
-        return new UserFragment();
+    public static TemplateFragment newInstance() {
+        return new TemplateFragment();
     }
 
     @Override
-    protected UserPresenter createPresenter() {
-        return new UserPresenter();
+    protected TemplatePresenter createPresenter() {
+        return new TemplatePresenter();
     }
 
     @Override
     protected int getLayout() {
-        return R.layout.fragment_user;
+        return R.layout.fragment_template;
     }
 
     @Override
@@ -59,9 +59,9 @@ public class UserFragment extends BaseMVPLazyFragment<IUserDisplayer, UserPresen
 
     @Override
     protected void loadData() {
-        // mPresenter.fetchUserWithRx();
-        //mPresenter.fetchUserWithJobTask();
-        mPresenter.fetchUserWithListener();
+        // mPresenter.fetchDataWithRx();
+        //mPresenter.fetchDataWithJobTask();
+        mPresenter.fetchDataWithListener();
     }
 
     @Override
@@ -84,9 +84,9 @@ public class UserFragment extends BaseMVPLazyFragment<IUserDisplayer, UserPresen
     }
 
     @Override
-    public void onDisplay(UserModel user) {
-        if (user != null) {
-            titleTV.setText("User: " + user.toString());
+    public void onDisplay(TemplateModel data) {
+        if (data != null) {
+            titleTV.setText("Template: " + data.toString());
         }
     }
 }
