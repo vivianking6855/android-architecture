@@ -36,5 +36,5 @@ CleanArchitecture项目包含四层:
 
 ![](https://i.imgur.com/5X0VIG0.jpg)
 
-详细说明请参看[博客CleanArchitecture](http://vivianking6855.github.io/2018/03/30/Template-Open/)
+详细说明请参看[博客CleanArchitecture](http://vivianking6855.github.io/2018/05/30/Template-Clean/)
 
